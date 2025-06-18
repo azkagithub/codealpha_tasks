@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #242121;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: aliceblue;
+    }
+
+    .filter-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .filter-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #333;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .filter-buttons button:hover {
+      background-color: #555;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .gallery-img {
+      width: 100%;
+      border-radius: 10px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    .gallery-item {
+      display: block;
+    }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .lightbox-img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 10px;
+    }
+
+    .close, .prev, .next {
+      position: absolute;
+      top: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 10px;
+    }
+
+    .close {
+      right: 30px;
+    }
+
+    .prev {
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .next {
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    @media (max-width: 600px) {
+      .filter-buttons button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Responsive Image Gallery</h1>
+  <div class="filter-buttons">
+    <button onclick="filterSelection('all')"> Show All</button>
+    <button onclick="filterSelection('random')"> Random</button>
+    <button onclick="filterSelection('city')"> City</button>
+    <button onclick="filterSelection('animals')"> Animals</button>
+    <button onclick="filterSelection('nature')"> Nature</button>
+    
+  </div>
+
+  <div class="gallery" id="gallery">
+    <div class="gallery-item random"><img src="random (1).jpg" alt="random (1)" class="gallery-img"></div>
+    <div class="gallery-item city"><img src="City 1.PNG" alt="City 1" class="gallery-img"></div>
+    <div class="gallery-item random"><img src="random (2).jpg" alt="random (2)" class="gallery-img"></div>
+    <div class="gallery-item city"><img src="City 2.PNG" alt="City 1" class="gallery-img"></div>
+    <div class="gallery-item random"><img src="random (4).jpg" alt="random (4)" class="gallery-img"></div>
+    <div class="gallery-item city"><img src="City 3.PNG" alt="City 1" class="gallery-img"></div>
+    <div class="gallery-item nature"><img src="Nature 1.PNG" alt="Nature 2" class="gallery-img"></div>
+    <div class="gallery-item random"><img src="random (5).jpg" alt="random (5)" class="gallery-img"></div>
+    <div class="gallery-item animals"><img src="Animal 1.PNG" alt="Animal 1" class="gallery-img"></div>
+    <div class="gallery-item nature"><img src="Nature 2.PNG" alt="Nature 2" class="gallery-img"></div>
+    <div class="gallery-item nature"><img src="Nature 3.PNG" alt="Nature 2" class="gallery-img"></div>
+    <div class="gallery-item random"><img src="random (6).jpg" alt="random (6)" class="gallery-img"></div>
+    <div class="gallery-item animals"><img src="Animal 2.PNG" alt="Animal 1" class="gallery-img"></div>
+    <div class="gallery-item animals"><img src="Animal 3.PNG" alt="Animal 1" class="gallery-img"></div>
+    <div class="gallery-item nature"><img src="Nature 4.PNG" alt="Nature 2" class="gallery-img"></div>
+    <div class="gallery-item random"><img src="random (7).jpg" alt="random (7)" class="gallery-img"></div>
+    <div class="gallery-item random"><img src="random (8).jpg" alt="random (8)" class="gallery-img"></div>
+    <div class="gallery-item animals"><img src="Animal 4.PNG".jpeg" alt="Animal 1" class="gallery-img"></div>
+    <div class="gallery-item nature"><img src="Nature 5.PNG" alt="Nature 2" class="gallery-img"></div>
+    <div class="gallery-item animals"><img src="Animal 5.PNG" alt="Animal 2" class="gallery-img"></div>
+    
+    <!-- Add more images as needed -->
+  </div>
+
+  <div class="lightbox" id="lightbox">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <span class="prev" onclick="changeImage(-1)">&#10094;</span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <span class="next" onclick="changeImage(1)">&#10095;</span>
+  </div>
+
+  <script>
+    const galleryImages = document.querySelectorAll('.gallery-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    let currentIndex = 0;
+
+    galleryImages.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        currentIndex = index;
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    function changeImage(n) {
+      currentIndex += n;
+      if (currentIndex >= galleryImages.length) currentIndex = 0;
+      if (currentIndex < 0) currentIndex = galleryImages.length - 1;
+      lightboxImg.src = galleryImages[currentIndex].src;
+    }
+
+    function filterSelection(category) {
+      const items = document.querySelectorAll('.gallery-item');
+      if (category === 'all') category = '';
+      items.forEach(item => {
+        item.style.display = item.classList.contains(category) ? 'block' : 'none';
+        if (category === '') item.style.display = 'block';
+      });
+    }
+
+    filterSelection('all'); // Default view
+  </script>
+</body>
+</html>
