@@ -1,3 +1,4 @@
 # codealpha_tasks
 Image gallery 
-Calulater Build
+OR Calulater Build
+OR Personel Portfolio
