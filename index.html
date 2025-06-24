@@ -2,39 +2,84 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basic Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
   <link rel="stylesheet" href="style.css" />
-  <link rel="functionality" href="script.js">
 </head>
 <body>
-  <div class="calculator">
-    <input type="text" id="display" readonly />
-    <div class="buttons">
-      <button class="btn" data-key="C">C</button>
-      <button class="btn" data-key="/">÷</button>
-      <button class="btn" data-key="*">×</button>
-      <button class="btn" data-key="Backspace">⌫</button>
+  <header id="home">
+    <nav>
+      <h1 class="logo">AK</h1>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    
+  </header>
 
-      <button class="btn" data-key="7">7</button>
-      <button class="btn" data-key="8">8</button>
-      <button class="btn" data-key="9">9</button>
-      <button class="btn" data-key="-">−</button>
+  <section id="about">
+    <div class="hero">
+        <h2>Hello, I’m Azka Khan</h2>
+        <p><bold>Computer Science Graduate & Project Coordinator</bold></p>
+        
+      </div>
 
-      <button class="btn" data-key="4">4</button>
-      <button class="btn" data-key="5">5</button>
-      <button class="btn" data-key="6">6</button>
-      <button class="btn" data-key="+">+</button>
+    <h2>About Me</h2>
+    <p>I’m passionate about software development and project management. Experienced in leading student projects, web development, and team collaboration.</p>
+    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto
+        de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a 
+        la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos 
+        especimen.No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos,
+         quedando esencialmente igual al original.</p>  
+</section>
 
-      <button class="btn" data-key="1">1</button>
-      <button class="btn" data-key="2">2</button>
-      <button class="btn" data-key="3">3</button>
-      <button class="btn equal" data-key="Enter">=</button>
-
-      <button class="btn zero" data-key="0">0</button>
-      <button class="btn" data-key=".">.</button>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-grid">
+      <div class="project-card">
+        <h3>Image Gallery App</h3>
+        <p>A responsive gallery with lightbox and filtering features.</p>
+      </div>
+      <div class="project-card">
+        <h3>Hotel Booking System</h3>
+        <p>Built using PHP & MySQL for hotel room management and reservation.</p>
+      </div>
     </div>
-  </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills-list">
+      <li>HTML</li>
+      <li>CSS</li>
+      <li>JavaScript</li>
+      <li>C++ / Java</li>
+      <li>Project Coordination</li>
+    </ul>
+  </section>
+
+  <section id="resume">
+    <h2>Resume</h2>
+    <a href="resume.pdf" download class="btn">Download Resume</a>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required />
+      <input type="email" placeholder="Your Email" required />
+      <textarea placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Azka Khan</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
