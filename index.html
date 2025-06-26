@@ -2,84 +2,39 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Professional Music Player</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-  <header id="home">
-    <nav>
-      <h1 class="logo">AK</h1>
-      <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#resume">Resume</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-    
-  </header>
-
-  <section id="about">
-    <div class="hero">
-        <h2>Hello, I’m Azka Khan</h2>
-        <p><bold>Computer Science Graduate & Project Coordinator</bold></p>
-        
-      </div>
-
-    <h2>About Me</h2>
-    <p>I’m passionate about software development and project management. Experienced in leading student projects, web development, and team collaboration.</p>
-    <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto
-        de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a 
-        la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos 
-        especimen.No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos,
-         quedando esencialmente igual al original.</p>  
-</section>
-
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <div class="project-card">
-        <h3>Image Gallery App</h3>
-        <p>A responsive gallery with lightbox and filtering features.</p>
-      </div>
-      <div class="project-card">
-        <h3>Hotel Booking System</h3>
-        <p>Built using PHP & MySQL for hotel room management and reservation.</p>
-      </div>
+  <div class="player">
+    <div class="cover">
+      <img id="cover" src="Nature 5.PNG" alt="" />
     </div>
-  </section>
+    <h2 id="title">Song Title</h2>
+    <h4 id="artist">Artist</h4>
 
-  <section id="skills">
-    <h2>Skills</h2>
-    <ul class="skills-list">
-      <li>HTML</li>
-      <li>CSS</li>
-      <li>JavaScript</li>
-      <li>C++ / Java</li>
-      <li>Project Coordination</li>
-    </ul>
-  </section>
+    <div class="controls">
+      <button id="prev"><i class="fas fa-backward"></i></button>
+      <button id="play"><i class="fas fa-play"></i></button>
+      <button id="next"><i class="fas fa-forward"></i></button>
+    </div>
 
-  <section id="resume">
-    <h2>Resume</h2>
-    <a href="resume.pdf" download class="btn">Download Resume</a>
-  </section>
+    <div class="progress-container" id="progress-container">
+      <div class="progress" id="progress"></div>
+    </div>
+    <div class="time">
+      <span id="current-time">0:00</span>
+      <span id="duration">0:00</span>
+    </div>
 
-  <section id="contact">
-    <h2>Contact Me</h2>
-    <form>
-      <input type="text" placeholder="Your Name" required />
-      <input type="email" placeholder="Your Email" required />
-      <textarea placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
-    </form>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Azka Khan</p>
-  </footer>
+    <div class="volume">
+      <i class="fas fa-volume-down"></i>
+      <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="1" />
+      <i class="fas fa-volume-up"></i>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
